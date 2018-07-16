@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        Add a New Student
+    </div>
+
+    <div class="container">
+        {%  if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {%  csrf_token  %}
+        {% include 'edu/form-template' %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" name="register">Submit</button>
+            </div>
+        </div>
+    </form>
+    </div>
+{% endblock %}

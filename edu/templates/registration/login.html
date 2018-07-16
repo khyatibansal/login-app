@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+    {% block title %}
+        <meta charset="UTF-8">
+        <title>Title</title>
+    {% endblock %}
+
+    {% block body %}
+
+        <h1>you can logged in</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="login" name="register">
+        </form>
+
+    {% endblock %}

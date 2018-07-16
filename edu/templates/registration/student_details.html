@@ -1,0 +1,34 @@
+{%  extends 'base.html' %}
+{% block body %}
+    {%  if student_list %}
+
+        {% for student in student_list %}
+            <ul>
+            <li>
+                <h2>Name:{{student.stu_name}}</h2>
+                <h2>Email:{{student.stu_email}}</h2>
+                <h2>Phone No.:{{student.stu_phone_no}}</h2>
+                <h2>Date Of Birth:{{student.stu_dob}}</h2>
+
+                    <form action="{% url 'edu:student-delete' student.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-default btn-sm">Delete</button>
+                    </form>
+                    <form action="{% url 'edu:student-update' student.id  %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-default btn-sm">Update</button>
+                    </form>
+
+
+            </li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <h1>No student entries found on the databse</h1>
+    {% endif %}
+
+    <form action="{% url  'edu:student-entry' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-default btn-sm">Make a student entry here</button>
+    </form>
+{% endblock %}
